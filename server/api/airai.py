@@ -1,5 +1,5 @@
 import logging
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, make_response
 from .utils import validate_input
 from .air_quality_service import AirQualityService
 from .llms import AirQualityOpenAI
@@ -31,8 +31,11 @@ def air_quality():
         # call the AirQualityService to get the response
         service = AirQualityService(openai, output_parser, prompt)
         response = service.get_air_quality(prompt_text)
-        return jsonify(response)
-    
+
+        # added Referrer-Policy header to the response
+        headers = {'Referrer-Policy': 'no-referrer'}
+        return make_response(jsonify(response), 200, headers)
+
     except Exception as e:
         # log the error
         logger.error(f"Error occurred: {str(e)}")
