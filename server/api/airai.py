@@ -1,5 +1,7 @@
 import logging
 from flask import Blueprint, request, jsonify, make_response
+from flask_cors import CORS
+
 from .utils import validate_input
 from .air_quality_service import AirQualityService
 from .llms import AirQualityOpenAI
@@ -8,6 +10,7 @@ from .prompts import AirQualityPrompt
 
 
 API_BLUEPRINT = Blueprint('airai', __name__)
+CORS(API_BLUEPRINT)
 
 # set up logging
 logging.basicConfig(level=logging.ERROR)
