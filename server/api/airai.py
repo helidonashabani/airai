@@ -31,7 +31,6 @@ def air_quality():
         # call the AirQualityService to get the response
         service = AirQualityService(openai, output_parser, prompt)
         response = service.get_air_quality(prompt_text)
-        print(response)
         return jsonify(response)
     
     except Exception as e:
