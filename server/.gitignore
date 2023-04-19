@@ -30,6 +30,7 @@ build/
 bin/
 .eggs/
 lib/
+./.idea
 
 # mypy
 .mypy_cache/

@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 
 const apiClient: AxiosInstance = axios.create({
-  baseURL: 'https://main-server-airiai.netlify.app/api',
+  baseURL: 'http://localhost:5000/api',
 });
 
 export default apiClient;
